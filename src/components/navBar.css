@@ -1,0 +1,18 @@
+.navbar * {
+  font-size: 1.6rem;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  margin-right: 1.6rem;
+}
+
+.navbar_bg_gradient {
+  background: #e53935; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #e53935,
+    #e35d5b
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #e53935, #e35d5b);
+}
