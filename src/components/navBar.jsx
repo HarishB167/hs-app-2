@@ -51,6 +51,16 @@ const NavBar = () => {
               Contact us
             </NavLink>
           </li>
+          <li className="nav-item">
+            <NavLink
+              className="nav-link"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              to="/inbuiltapps"
+            >
+              Inbuilt Apps
+            </NavLink>
+          </li>
         </ul>
       </div>
     </nav>
