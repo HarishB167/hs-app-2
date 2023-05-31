@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700;900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+
+:root {
+  --bg-color-brown: #72580d;
+  --bg-color-white: #f6f6f6;
+  --fnt-color-black: #303030;
+  --fg-color-gold: #e08b01;
+  --hover-color-light: rgb(173, 232, 244);
+}
+
+.sw_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-color-brown);
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+
+.sw_main {
+  max-height: 667px;
+  height: 100%;
+  max-width: 375px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color-white);
+  padding-top: 1.8rem;
+}
+
+.sw_heading {
+  font-size: 10.4rem;
+  color: var(--fnt-color-black);
+  font-weight: 900;
+  opacity: 10%;
+}
+
+.sw_timer {
+  width: 24.2rem;
+  height: 24.2rem;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #e1e1e1 0%, #ffffff 100%);
+  box-shadow: -3.94749e-14px 40.2667px 80.5333px rgba(51, 51, 51, 0.1665),
+    inset 1.04389e-14px -10.6483px 10.6483px #d9d9d9,
+    inset -1.04389e-14px 10.6483px 10.6483px #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sw_timer__text {
+  font-size: 4.56rem;
+  color: var(--fg-color-gold);
+  font-weight: 700;
+}
+
+.sw_reset {
+  position: relative;
+  top: -4.3rem;
+  width: 7.4rem;
+  height: 7.4rem;
+  font-size: 3.3rem;
+  border-radius: 50%;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 2rem;
+  background: linear-gradient(180deg, #ce8701 0%, #ffb401 100%);
+  box-shadow: 8.73581e-16px 14.2667px 28.5333px rgba(49, 32, 0, 0.24),
+    inset -2.71781e-16px -4.43852px 4.43852px #c48101,
+    inset 2.71781e-16px 4.43852px 4.43852px #ffbb01;
+}
+
+.sw_startStop {
+  width: calc(100% - 4.8rem);
+  margin-top: 7.9rem;
+  font-weight: 700;
+  font-size: 2rem;
+  padding: 1.25rem 13.9rem;
+  border-radius: 8rem;
+  border: none;
+  background: linear-gradient(180deg, #ffab00 0%, #d68100 100%);
+  box-shadow: 1.51448e-15px 24.7333px 49.4667px rgba(51, 31, 0, 0.24),
+    inset -4.71172e-16px -7.69481px 7.69481px #cc7a00,
+    inset 4.71172e-16px 7.69481px 7.69481px #ffb100;
+  color: white;
+}
+
+.sw_reset:hover,
+.sw_startStop:hover {
+  opacity: 75%;
+}

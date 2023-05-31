@@ -11,6 +11,9 @@ const InBuiltApps = () => {
         <li>
           <Link to="/apps/rock-paper-scissor">Rock Paper Scissor Game</Link>
         </li>
+        <li>
+          <Link to="/apps/stopwatch">Stopwatch</Link>
+        </li>
       </ul>
     </div>
   );

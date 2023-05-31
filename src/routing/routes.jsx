@@ -5,6 +5,7 @@ import ErrorPage from "../pages/errorPage";
 import InBuiltApps from "../pages/inBuiltApps";
 import Calculator from "../pages/calculator";
 import RockPaperScissor from "../pages/rockPaperScissor";
+import Stopwatch from "../pages/stopwatch";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
           {
             path: "rock-paper-scissor",
             element: <RockPaperScissor />,
+          },
+          {
+            path: "stopwatch",
+            element: <Stopwatch />,
           },
         ],
       },
