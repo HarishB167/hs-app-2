@@ -53,7 +53,7 @@ const NavBar = () => {
           </li>
           <li className="nav-item">
             <NavLink
-              className="nav-link"
+              className="nav-link home-nav-highlighted"
               data-toggle="collapse"
               data-target="#navbarSupportedContent"
               to="/inbuiltapps"

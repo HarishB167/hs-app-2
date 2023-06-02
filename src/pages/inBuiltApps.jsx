@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "./inBuiltApps.css";
 
 const InBuiltApps = () => {
   return (
-    <div>
+    <div className="iba_main">
       <h1>In Built Apps</h1>
       <ul>
         <li>
@@ -13,6 +14,9 @@ const InBuiltApps = () => {
         </li>
         <li>
           <Link to="/apps/stopwatch">Stopwatch</Link>
+        </li>
+        <li>
+          <Link to="/apps/password-generator">Password Generator</Link>
         </li>
       </ul>
     </div>

@@ -16,3 +16,12 @@
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #e53935, #e35d5b);
 }
+
+.home-nav-highlighted {
+  background-color: #c9a227;
+  border-radius: 2px;
+}
+
+.home-nav-highlighted:hover {
+  opacity: 75%;
+}

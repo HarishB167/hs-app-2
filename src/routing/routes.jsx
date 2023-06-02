@@ -6,6 +6,7 @@ import InBuiltApps from "../pages/inBuiltApps";
 import Calculator from "../pages/calculator";
 import RockPaperScissor from "../pages/rockPaperScissor";
 import Stopwatch from "../pages/stopwatch";
+import PasswordGenerator from "../pages/passwordGenerator";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path: "stopwatch",
             element: <Stopwatch />,
+          },
+          {
+            path: "password-generator",
+            element: <PasswordGenerator />,
           },
         ],
       },
