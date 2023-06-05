@@ -7,6 +7,7 @@ import Calculator from "../pages/calculator";
 import RockPaperScissor from "../pages/rockPaperScissor";
 import Stopwatch from "../pages/stopwatch";
 import PasswordGenerator from "../pages/passwordGenerator";
+import TicTacToe from "../pages/ticTacToe";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
           {
             path: "password-generator",
             element: <PasswordGenerator />,
+          },
+          {
+            path: "tic-tac-toe",
+            element: <TicTacToe />,
           },
         ],
       },

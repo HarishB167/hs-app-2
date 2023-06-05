@@ -18,6 +18,9 @@ const InBuiltApps = () => {
         <li>
           <Link to="/apps/password-generator">Password Generator</Link>
         </li>
+        <li>
+          <Link to="/apps/tic-tac-toe">Tic-Tac-Toe Game</Link>
+        </li>
       </ul>
     </div>
   );
