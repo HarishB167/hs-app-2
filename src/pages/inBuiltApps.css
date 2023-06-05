@@ -1,5 +1,9 @@
 .iba_main {
   height: 100%;
   width: 100%;
-  margin: 5rem 10rem;
+  padding: 1% 2%;
+}
+
+.iba_main a {
+  font-weight: bold;
 }
