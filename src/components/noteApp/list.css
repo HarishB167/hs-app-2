@@ -1,0 +1,72 @@
+:root {
+  --bg-color-black-lighter: #1c1c1c;
+  --bg-dark-listItem: rgba(255, 255, 255, 0.03);
+  --bg-dark-listItem-selected: rgba(255, 255, 255, 0.1);
+  --fnt-listItem-date: rgba(255, 255, 255, 0.4);
+  --fnt-listItem-content: rgba(255, 255, 255, 0.6);
+}
+
+.na_list {
+  padding: 3rem 2rem;
+  height: 100%;
+  width: 24%;
+  min-width: 24%;
+  background: var(--bg-color-black-lighter);
+}
+
+.na_list_title {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  line-height: 2.8rem;
+}
+
+.na_listContainer {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  overflow-x: auto;
+  height: calc(100% - 3rem);
+}
+
+.na_list_listItem {
+  padding: 2rem;
+  background: var(--bg-dark-listItem);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+
+.na_list_listItem:hover {
+  opacity: 75%;
+}
+
+.na_list_listItem--selected {
+  background: var(--bg-dark-listItem-selected);
+}
+
+.na_list_listItem_title {
+  width: 100%;
+  display: inline-block;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
+}
+
+.na_list_listItem_dateCreated {
+  margin-right: 1rem;
+  color: var(--fnt-listItem-date);
+}
+
+.na_list_listItem_content {
+  display: inline-block;
+  text-overflow: ellipsis;
+  width: calc(100% - 1rem - 10ch);
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--fnt-listItem-content);
+}

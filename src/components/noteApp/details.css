@@ -1,0 +1,83 @@
+:root {
+  --fnt-color-defaultHint: rgba(255, 255, 255, 0.6);
+}
+
+.na_details_container {
+  height: 100%;
+  flex-grow: 1;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.na_details {
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 5rem 0;
+  height: 100%;
+}
+
+.na_details_title {
+  font-size: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.na_details_title input {
+  border: none;
+  outline: none;
+  color: inherit;
+  background: inherit;
+}
+
+.na_details hr {
+  border-color: white;
+  width: 100%;
+  opacity: 10%;
+}
+
+.na_details_attr {
+  margin: 1.5rem 0;
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 1.76rem;
+}
+
+.na_details_attrIcon {
+  margin-right: 2rem;
+  opacity: 60%;
+}
+
+.na_details_attrKey {
+  opacity: 60%;
+}
+
+.na_details_attrValue {
+  position: absolute;
+  left: 14.6rem;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.na_details_content {
+  margin: 1.5rem 0 2.5rem;
+}
+
+.na_details textarea {
+  margin: 1.5rem 0 2.5rem;
+  flex: 1;
+  background: inherit;
+  color: inherit;
+  border: none;
+}
+
+.na_details select {
+  color: inherit;
+  background: inherit;
+  position: absolute;
+  left: 14.6rem;
+  font-weight: 600;
+  text-decoration: underline;
+  outline: none;
+  border: none;
+}

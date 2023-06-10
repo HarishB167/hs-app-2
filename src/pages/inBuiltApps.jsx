@@ -8,6 +8,7 @@ const InBuiltApps = () => {
     { link: "/apps/stopwatch", name: "Stopwatch" },
     { link: "/apps/password-generator", name: "Password Generator" },
     { link: "/apps/tic-tac-toe", name: "Tic-Tac-Toe Game" },
+    { link: "/apps/note-app", name: "Note App" },
   ];
   return (
     <div className="iba_main">

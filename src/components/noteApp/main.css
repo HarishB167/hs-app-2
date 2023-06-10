@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color-black: #181818;
+  --color-blue: #312eb5;
+}
+
+.na_container {
+  background: var(--bg-color-black);
+  color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}

@@ -8,6 +8,7 @@ import RockPaperScissor from "../pages/rockPaperScissor";
 import Stopwatch from "../pages/stopwatch";
 import PasswordGenerator from "../pages/passwordGenerator";
 import TicTacToe from "../pages/ticTacToe";
+import NoteApp from "../pages/noteApp";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
           {
             path: "tic-tac-toe",
             element: <TicTacToe />,
+          },
+          {
+            path: "note-app",
+            element: <NoteApp />,
           },
         ],
       },

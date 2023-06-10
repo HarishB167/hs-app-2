@@ -1,0 +1,82 @@
+.na_menu {
+  width: 21%;
+  min-width: 21%;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.na_menu_title {
+  font-size: 2.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.na_menu_searchIcon {
+  font-size: 2rem;
+  opacity: 40%;
+}
+
+.na_menu_newNoteBtn {
+  margin-top: 3rem;
+  color: white;
+  background: rgba(255, 255, 255, 5%);
+  border: none;
+  padding: 1rem 0;
+}
+
+.na_menu_newNoteBtn:hover {
+  opacity: 75%;
+}
+
+.na_menu_newNoteBtn::before {
+  content: "+";
+  margin-right: 1rem;
+}
+
+.na_menu_menuGroupsContainer {
+  overflow-x: auto;
+}
+
+.na_menu_group {
+  margin-top: 3rem;
+}
+
+.na_menu_group__label {
+  opacity: 60%;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.na_menu_group__labelIcon {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.na_menu_group_item {
+  cursor: pointer;
+  padding: 1rem 0;
+  opacity: 60%;
+  font-size: 1.6rem;
+}
+
+.na_menu_group_item:hover {
+  opacity: 100%;
+}
+
+.na_menu_group_item_icon {
+  margin-right: 1.5rem;
+}
+
+.na_menu_group_item_input {
+  margin-left: 1.5rem;
+  background: inherit;
+  color: inherit;
+  opacity: 100%;
+  font-weight: 600;
+  border: 1px solid white;
+}
