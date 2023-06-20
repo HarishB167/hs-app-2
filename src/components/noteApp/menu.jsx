@@ -59,6 +59,8 @@ const Menu = ({ fileContainer, setFileContainer, setCurrentNote }) => {
   const [recentsMenuGroup, setRecentsMenuGroup] = useState(null);
   const [foldersMenuGroup, setFoldersMenuGroup] = useState(null);
   const [isAddingFolder, setIsAddingFolder] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   const handleCreateFolder = () => {
     setIsAddingFolder(!isAddingFolder);
@@ -87,17 +89,47 @@ const Menu = ({ fileContainer, setFileContainer, setCurrentNote }) => {
     </>
   );
 
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setFileContainer("search", {
+        title: "Search Results",
+        searchText: searchText,
+      });
+    }
+  };
+
   return (
     <div className="na_menu">
       <span className="na_menu_title">
         NoteApp{" "}
-        <span className="na_menu_searchIcon">
+        <span
+          className="na_menu_searchIcon"
+          onClick={() => setIsSearchOpen(!isSearchOpen)}
+        >
           <span className="fa-solid fa-magnifying-glass"></span>
         </span>
       </span>
-      <button className="na_menu_newNoteBtn" onClick={handleNewNoteBtnClick}>
-        New Note
-      </button>
+      {!isSearchOpen && (
+        <button className="na_menu_newNoteBtn" onClick={handleNewNoteBtnClick}>
+          New Note
+        </button>
+      )}
+      {isSearchOpen && (
+        <div className="na_menu_searchBox">
+          <span className="fa-solid fa-magnifying-glass"></span>
+          <input
+            type="text"
+            placeholder="Search note"
+            value={searchText}
+            onChange={handleSearch}
+            onKeyDown={handleSearchKeyDown}
+          />
+        </div>
+      )}
       <div className="na_menu_menuGroupsContainer">
         <MenuGroup label="Recents">
           {recentsMenuGroup &&

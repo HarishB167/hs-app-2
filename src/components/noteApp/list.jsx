@@ -41,6 +41,9 @@ const List = ({
     } else if (fileContainer && fileContainer.type === "favorites") {
       const d = notesService.getFavorites();
       setData(d);
+    } else if (fileContainer && fileContainer.type === "search") {
+      const d = notesService.searchNotes(fileContainer.container.searchText);
+      setData(d);
     }
   }, [fileContainer, currentNote]);
 

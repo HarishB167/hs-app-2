@@ -42,7 +42,6 @@ if (getFoldersLocalStorage().length === 0) setFoldersLocalStorage(basicFolders);
 const getNotes = () => {
   const listItems = getListItems();
   const folders = getFoldersLocalStorage();
-  listItems.splice(listItems.length, 0, ...listItems);
   return listItems.map((item) => ({
     ...item,
     folderName: folders[item.folderId],
@@ -139,6 +138,14 @@ const addToArchive = (note) => {
   setListItems(listItems);
 };
 
+const searchNotes = (searchText) => {
+  return getNotes().filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.content.toLowerCase().includes(searchText.toLowerCase())
+  );
+};
+
 export default {
   getNotes,
   saveNote,
@@ -153,4 +160,5 @@ export default {
   deleteNote,
   getArchievedItems,
   addToArchive,
+  searchNotes,
 };

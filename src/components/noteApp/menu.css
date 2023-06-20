@@ -16,6 +16,7 @@
 .na_menu_searchIcon {
   font-size: 2rem;
   opacity: 40%;
+  cursor: pointer;
 }
 
 .na_menu_newNoteBtn {
@@ -33,6 +34,25 @@
 .na_menu_newNoteBtn::before {
   content: "+";
   margin-right: 1rem;
+}
+
+.na_menu_searchBox {
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 5%);
+  border: none;
+  padding: 1rem;
+}
+
+.na_menu_searchBox span {
+  margin-right: 0.8rem;
+  color: inherit;
+}
+
+.na_menu_searchBox input {
+  color: inherit;
+  background: rgba(255, 255, 255, 0%);
+  border: none;
+  padding: 0;
 }
 
 .na_menu_menuGroupsContainer {

@@ -66,14 +66,14 @@
 .na_details textarea {
   margin: 1.5rem 0 2.5rem;
   flex: 1;
-  background: inherit;
+  background: var(--bg-color-black);
   color: inherit;
   border: none;
 }
 
 .na_details select {
   color: inherit;
-  background: inherit;
+  background: var(--bg-color-black);
   position: absolute;
   left: 14.6rem;
   font-weight: 600;
