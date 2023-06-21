@@ -1,0 +1,23 @@
+.na_menu_group_item {
+  cursor: pointer;
+  padding: 1rem 0;
+  opacity: 60%;
+  font-size: 1.6rem;
+}
+
+.na_menu_group_item:hover {
+  opacity: 100%;
+}
+
+.na_menu_group_item_icon {
+  margin-right: 1.5rem;
+}
+
+.na_menu_group_item_input {
+  margin-left: 1.5rem;
+  background: inherit;
+  color: inherit;
+  opacity: 100%;
+  font-weight: 600;
+  border: 1px solid white;
+}

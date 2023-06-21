@@ -1,0 +1,12 @@
+.na_menu_group {
+  margin-top: 3rem;
+}
+
+.na_menu_group__label {
+  opacity: 60%;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 2rem;
+}
