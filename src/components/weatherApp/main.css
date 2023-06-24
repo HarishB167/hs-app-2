@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.min.css");
+
+:root {
+  --sunClouded-background: linear-gradient(
+    167.44deg,
+    #29b2dd 0%,
+    #33aadd 47.38%,
+    #2dc8ea 100%
+  );
+  --sunClouded-contentBg: #1040844c;
+  --rainy-background: linear-gradient(
+    167.44deg,
+    #08244f 0%,
+    #134cb5 47.38%,
+    #0b42ab 100%
+  );
+  --rainy-contentBg: #0010264c;
+}
+
+.wa_main {
+  width: 100%;
+  height: 100%;
+  padding: 4.4rem 4rem 0;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+}
+
+.wa_main--sunClouded {
+  background: var(--sunClouded-background);
+}
+
+.wa_main--rainy {
+  background: var(--rainy-background);
+}
+
+.wa_contentBg--sunClouded {
+  background-color: var(--sunClouded-contentBg);
+}
+
+.wa_contentBg--rainy {
+  background-color: var(--sunClouded-rainy);
+}
+
+.wa_row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.wa_location {
+  display: flex;
+  align-items: center;
+}
+
+.wa_locationIcon {
+  font-size: 2.4rem;
+}
+
+.wa_locationText {
+  margin-left: 1.2rem;
+  margin-right: 2rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.wa_locationOptions {
+  font-size: 1rem;
+}
+
+.wa_weatherIcon {
+  font-size: 10rem;
+  margin: 5rem 0;
+}
+
+.wa_weatherDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wa_temperature {
+  font-weight: 600;
+  font-size: 6.4rem;
+  line-height: 7.6rem;
+}
+
+.wa_moreStats {
+  display: flex;
+  column-gap: 3rem;
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  padding: 1rem;
+  border-radius: 2.2rem;
+  margin-top: 3.1rem;
+}
+
+.wa_moreStats i {
+  font-size: 1.6rem;
+}
+
+.wa_moreStats > span {
+  display: flex;
+  column-gap: 1rem;
+  padding: 0.5rem 1.05rem;
+}

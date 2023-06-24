@@ -9,6 +9,7 @@ import Stopwatch from "../pages/stopwatch";
 import PasswordGenerator from "../pages/passwordGenerator";
 import TicTacToe from "../pages/ticTacToe";
 import NoteApp from "../pages/noteApp";
+import WeatherApp from "../pages/weatherApp";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
           {
             path: "note-app",
             element: <NoteApp />,
+          },
+          {
+            path: "weather-app",
+            element: <WeatherApp />,
           },
         ],
       },
