@@ -61,13 +61,13 @@ const Main = () => {
   });
 
   const getMainSkinClass = () => {
-    if (theme == THEMES.SUN_CLOUDED) return " wa_main--sunClouded";
-    else if (theme == THEMES.RAINY) return " wa_main--rainy";
+    if (theme === THEMES.SUN_CLOUDED) return " wa_main--sunClouded";
+    else if (theme === THEMES.RAINY) return " wa_main--rainy";
   };
 
   const getContentSkinClass = () => {
-    if (theme == THEMES.SUN_CLOUDED) return " wa_contentBg--sunClouded";
-    else if (theme == THEMES.RAINY) return " wa_contentBg--rainy";
+    if (theme === THEMES.SUN_CLOUDED) return " wa_contentBg--sunClouded";
+    else if (theme === THEMES.RAINY) return " wa_contentBg--rainy";
   };
 
   return (
@@ -84,77 +84,82 @@ const Main = () => {
         </div>
         <Notification />
       </div>
-      <div className="wa_weatherIcon">
-        {weatherApiToFont[weatherData.weatherToday]}
-      </div>
-      <div className="wa_weatherDetails">
-        <span className="wa_temperature">{weatherData.temperature}º</span>
-        <span className="wa_percipitations">
-          Percipitation: {weatherData.rain}
-        </span>
-        <span className="wa_tempRange">
-          Max: {weatherData.temperatureMax}º Min: {weatherData.temperatureMin}º
-        </span>
-      </div>
-      <div className={"wa_moreStats" + getContentSkinClass()}>
-        <span className="wa_moreStats_rain">
-          <i class="fa-solid fa-cloud-rain"></i>
-          {weatherData.rain}
-        </span>
-        <span className="wa_moreStats_humidity">
-          <i className="wi wi-humidity"></i>
-          {weatherData.humidiy}
-        </span>
-        <span className="wa_moreStats_windSpeed">
-          <i className="wi wi-strong-wind"></i>
-          {weatherData.windSpeed}
-        </span>
-      </div>
-      <div className={"wa_todayStats" + getContentSkinClass()}>
-        <div className="wa_todayStats_header">
-          <span className="wa_todayStats_header_label">Today</span>
-          <span>{weatherData.date}</span>
+      <div className="wa_weatherOverview">
+        <div className="wa_weatherIcon">
+          {weatherApiToFont[weatherData.weatherToday]}
         </div>
-        <div className="wa_todayStats_hourly">
-          {weatherData.todayHourlyStats.map((item, idx) => (
-            <div key={idx} className="wa_todayStats_cardWeather">
-              <span className="wa_todayStats_cardWeather_temp">
-                {item.temperature}
-              </span>
-              <span className="wa_todayStats_cardWeather_weather">
-                {weatherApiToFont[item.weather]}
-              </span>
-              <span className="wa_todayStats_cardWeather_time">
-                {item.time}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className={"wa_weekForecast" + getContentSkinClass()}>
-        <div className="wa_weekForecast_header">
-          <span className="wa_weekForecast_header_label">Next Forecast</span>
-          <span>
-            <i class="fa-regular fa-calendar"></i>
+        <div className="wa_weatherDetails">
+          <span className="wa_temperature">{weatherData.temperature}º</span>
+          <span className="wa_percipitations">
+            Percipitation: {weatherData.rain}
+          </span>
+          <span className="wa_tempRange">
+            Max: {weatherData.temperatureMax}º Min: {weatherData.temperatureMin}
+            º
           </span>
         </div>
-        <div className="wa_weekForecast_list">
-          {weatherData.weekForecast.map((item, idx) => (
-            <div key={idx} className="wa_weekForecast_day">
-              <span className="wa_weekForecast_dayName">{item.day}</span>
-              <span className="wa_weekForecast_weather">
-                {weatherApiToFont[item.weather]}
-              </span>
-              <span className="wa_weekForecast_temperature">
-                <span className="wa_weekForecast_tempMax">
-                  {item.temperatureMax}ºc
+        <div className={"wa_moreStats" + getContentSkinClass()}>
+          <span className="wa_moreStats_rain">
+            <i class="fa-solid fa-cloud-rain"></i>
+            {weatherData.rain}
+          </span>
+          <span className="wa_moreStats_humidity">
+            <i className="wi wi-humidity"></i>
+            {weatherData.humidiy}
+          </span>
+          <span className="wa_moreStats_windSpeed">
+            <i className="wi wi-strong-wind"></i>
+            {weatherData.windSpeed}
+          </span>
+        </div>
+      </div>
+      <div className="wa_weatherContent">
+        <div className={"wa_todayStats" + getContentSkinClass()}>
+          <div className="wa_todayStats_header">
+            <span className="wa_todayStats_header_label">Today</span>
+            <span>{weatherData.date}</span>
+          </div>
+          <div className="wa_todayStats_hourly">
+            {weatherData.todayHourlyStats.map((item, idx) => (
+              <div key={idx} className="wa_todayStats_cardWeather">
+                <span className="wa_todayStats_cardWeather_temp">
+                  {item.temperature}
                 </span>
-                <span className="wa_weekForecast_tempMin">
-                  {item.temperatureMin}ºc
+                <span className="wa_todayStats_cardWeather_weather">
+                  {weatherApiToFont[item.weather]}
                 </span>
-              </span>
-            </div>
-          ))}
+                <span className="wa_todayStats_cardWeather_time">
+                  {item.time}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className={"wa_weekForecast" + getContentSkinClass()}>
+          <div className="wa_weekForecast_header">
+            <span className="wa_weekForecast_header_label">Next Forecast</span>
+            <span>
+              <i class="fa-regular fa-calendar"></i>
+            </span>
+          </div>
+          <div className="wa_weekForecast_list">
+            {weatherData.weekForecast.map((item, idx) => (
+              <div key={idx} className="wa_weekForecast_day">
+                <span className="wa_weekForecast_dayName">{item.day}</span>
+                <span className="wa_weekForecast_weather">
+                  {weatherApiToFont[item.weather]}
+                </span>
+                <span className="wa_weekForecast_temperature">
+                  <span className="wa_weekForecast_tempMax">
+                    {item.temperatureMax}ºc
+                  </span>
+                  <span className="wa_weekForecast_tempMin">
+                    {item.temperatureMin}ºc
+                  </span>
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
