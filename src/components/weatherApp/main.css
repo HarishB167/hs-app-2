@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.min.css");
 
@@ -21,8 +21,7 @@
 
 .wa_main {
   width: 100%;
-  height: 100%;
-  padding: 4.4rem 4rem 0;
+  padding: 4.4rem 4rem 2rem;
   display: flex;
   flex-direction: column;
   color: white;
@@ -74,7 +73,6 @@
 
 .wa_weatherIcon {
   font-size: 10rem;
-  margin: 5rem 0;
 }
 
 .wa_weatherDetails {
@@ -98,6 +96,8 @@
   padding: 1rem;
   border-radius: 2.2rem;
   margin-top: 3.1rem;
+  width: 32rem;
+  max-width: 32rem;
 }
 
 .wa_moreStats i {
@@ -108,4 +108,62 @@
   display: flex;
   column-gap: 1rem;
   padding: 0.5rem 1.05rem;
+}
+
+.wa_todayStats,
+.wa_weekForecast {
+  width: 32rem;
+  max-width: 32rem;
+  padding: 1.2rem 1.4rem 1.6rem;
+  border-radius: 2.2rem;
+  margin-top: 2rem;
+}
+
+.wa_todayStats_header,
+.wa_weekForecast_header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+}
+
+.wa_todayStats_header_label,
+.wa_weekForecast_header_label {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.wa_todayStats_hourly {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wa_todayStats_cardWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3rem;
+  padding: 1.3rem 1.2rem 2rem;
+  font-size: 1.8rem;
+}
+
+.wa_todayStats_cardWeather_weather {
+  font-size: 4rem;
+}
+
+.wa_weekForecast_day {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.4rem 0;
+}
+
+.wa_weekForecast_dayName {
+  width: 8.3rem;
+}
+
+.wa_weekForecast_temperature {
+  display: flex;
+  column-gap: 1rem;
 }
