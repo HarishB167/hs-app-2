@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Typeahead } from "react-bootstrap-typeahead";
 import Notification from "./common/notification";
+import weatherService from "../../services/weatherService";
+import "react-bootstrap-typeahead/css/Typeahead.css";
 import "./main.css";
 
 // Weather font source : https://erikflowers.github.io/weather-icons/
@@ -12,6 +15,16 @@ const weatherApiToFont = {
   rainy: <i className="wi wi-rain"></i>,
   day_lightening: <i className="wi wi-day-lightning"></i>,
   day_showers: <i className="wi wi-day-showers"></i>,
+
+  clear_sky: <i className="wi wi-day-sunny"></i>,
+  few_clouds: <i className="wi wi-day-cloudy"></i>,
+  scattered_clouds: <i className="wi wi-cloud"></i>,
+  broken_clouds: <i className="wi wi-day-cloudy"></i>,
+  shower_rain: <i className="wi wi-showers"></i>,
+  rain: <i className="wi wi-day-rain"></i>,
+  thunderstorm: <i className="wi wi-day-lightning"></i>,
+  snow: <i className="wi wi-snowflake-cold"></i>,
+  mist: <i className="wi wi-fog"></i>,
 };
 
 const THEMES = {
@@ -19,46 +32,44 @@ const THEMES = {
   RAINY: 1,
 };
 
+const DEFAULT_CITY = "DELHI";
+
 const Main = () => {
   const [theme, setTheme] = useState(THEMES.SUN_CLOUDED);
 
-  const [weatherData, setWeatherData] = useState({
-    location: "Delhi",
-    weatherToday: "day_clouded",
-    temperature: 28,
-    temperatureMin: 34,
-    temperatureMax: 28,
-    rain: "6%",
-    humidiy: "67%",
-    windSpeed: "25 km/h",
-    date: "Mar, 10",
-    todayHourlyStats: [
-      { time: "15.00", temperature: "31", weather: "day_clouded" },
-      { time: "16.00", temperature: "30", weather: "day_clouded" },
-      { time: "17.00", temperature: "28", weather: "clouded" },
-      { time: "18.00", temperature: "28", weather: "night_clouded" },
-    ],
-    weekForecast: [
-      {
-        day: "Monday",
-        weather: "rainy",
-        temperatureMin: "10",
-        temperatureMax: "13",
-      },
-      {
-        day: "Tuesday",
-        weather: "day_lightening",
-        temperatureMin: "17",
-        temperatureMax: "12",
-      },
-      {
-        day: "Wednesday",
-        weather: "day_showers",
-        temperatureMin: "21",
-        temperatureMax: "18",
-      },
-    ],
-  });
+  const [weatherData, setWeatherData] = useState();
+  const [locationsAutoComplete, setLocationsAutoComplete] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const loadFirstCityData = async () => {
+      const data = await weatherService.getLocationListFor(DEFAULT_CITY);
+      const city = data[0];
+      loadDataForCity(city.location, { lat: city.lat, lon: city.lon });
+    };
+    loadFirstCityData();
+  }, []);
+
+  const loadDataForCity = async (city, latLon) => {
+    setIsLoading(true);
+    const weather = await weatherService.getWeatherForCity(city, latLon);
+    setWeatherData(weather);
+    setIsLoading(false);
+  };
+
+  const handleLocationChange = async (location) => {
+    if (location.length > 0) {
+      const city = location[0];
+      loadDataForCity(city.location, { lat: city.lat, lon: city.lon });
+    }
+  };
+
+  const handleLocationInputChange = async (value) => {
+    if (value) {
+      const data = await weatherService.getLocationListFor(value);
+      setLocationsAutoComplete(data);
+    }
+  };
 
   const getMainSkinClass = () => {
     if (theme === THEMES.SUN_CLOUDED) return " wa_main--sunClouded";
@@ -70,17 +81,30 @@ const Main = () => {
     else if (theme === THEMES.RAINY) return " wa_contentBg--rainy";
   };
 
+  if (!weatherData) return <div>Fetching...</div>;
+
   return (
     <div className={"wa_main" + getMainSkinClass()}>
       <div className="wa_row">
         <div className="wa_location">
           <span className="wa_locationIcon">
-            <i class="fa-solid fa-location-dot"></i>
+            <i className="fa-solid fa-location-dot"></i>
           </span>
-          <span className="wa_locationText">{weatherData.location}</span>
-          <span className="wa_locationOptions">
-            <i class="fa-solid fa-chevron-down"></i>
-          </span>
+          <Typeahead
+            id="location"
+            options={locationsAutoComplete}
+            labelKey="location"
+            placeholder="Search for a location..."
+            onChange={handleLocationChange}
+            onInputChange={handleLocationInputChange}
+            className="wa_locationText_autocomplete"
+            defaultInputValue={DEFAULT_CITY}
+          />
+          {isLoading && (
+            <span className="wa_loadingSpinner">
+              <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+            </span>
+          )}
         </div>
         <Notification />
       </div>
@@ -100,7 +124,7 @@ const Main = () => {
         </div>
         <div className={"wa_moreStats" + getContentSkinClass()}>
           <span className="wa_moreStats_rain">
-            <i class="fa-solid fa-cloud-rain"></i>
+            <i className="fa-solid fa-cloud-rain"></i>
             {weatherData.rain}
           </span>
           <span className="wa_moreStats_humidity">
@@ -139,7 +163,7 @@ const Main = () => {
           <div className="wa_weekForecast_header">
             <span className="wa_weekForecast_header_label">Next Forecast</span>
             <span>
-              <i class="fa-regular fa-calendar"></i>
+              <i className="fa-regular fa-calendar"></i>
             </span>
           </div>
           <div className="wa_weekForecast_list">
