@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+
+:root {
+  --bg-color-white-2: #eef0f2;
+  --border-color: #777777;
+  --font-color-light: #777777;
+  --btn-color: #2886ff;
+}
+
+.ca_main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  font-family: "Nunito", sans-serif;
+  background-color: white;
+}
+
+.ca_messages {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  width: 33%;
+  height: 100%;
+  padding: 2.2rem 4rem 4rem;
+  overflow-x: auto;
+}
+.ca_conversation {
+  border-left: 1px solid var(--border-color);
+  width: calc(100% - 33%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Border setting */
+.ca_messagesSection,
+.ca_messages_settingIcon,
+.ca_profilePhoto {
+  border: 1px solid var(--border-color);
+}
+
+.ca_messagesSection {
+  border-radius: 2.2rem;
+}
+
+.ca_messages_headingLine {
+  padding: 0.9rem 1.3rem 0.9rem 2.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ca_accountDetails .ca_userName {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.ca_messages_label {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.ca_messages_settingIcon {
+  border-radius: 50%;
+  padding: 0.6rem;
+  display: flex;
+  font-size: 2.6rem;
+  cursor: pointer;
+}
+
+.ca_messages_settingIcon:hover {
+  opacity: 85%;
+}
+
+.ca_messagesHeading_line {
+  display: flex;
+  align-items: center;
+  padding: 1.3rem 2.1rem 3.1rem 2.1rem;
+  column-gap: 2.2rem;
+  background-color: var(--bg-color-white-2);
+  border-bottom-left-radius: 2.2rem;
+  border-bottom-right-radius: 2.2rem;
+}
+
+.ca_profilePhoto img {
+  width: 6.4rem;
+  height: 6.4rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.ca_profilePhoto {
+  border-radius: 50%;
+  padding: 0.2rem;
+  display: inline-block;
+}
+
+/* Conversation section */
+.ca_conversationDetails {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 3.6rem 10rem;
+  flex-wrap: wrap;
+  row-gap: 1.7rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ca_converationDetails_title {
+  width: 100%;
+  font-size: 4.6rem;
+  font-weight: 700;
+}
+
+.ca_conversationDetails .ca_userName {
+  margin-left: 1.6rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.ca_conversation_chat {
+  width: 100%;
+  background-color: var(--bg-color-white-2);
+  flex: 1;
+}
+
+.ca_conversation_inputBar {
+  position: absolute;
+  background-color: white;
+  bottom: 4.4rem;
+  left: 0;
+  right: 0;
+  width: calc(100% - 20rem);
+  border-radius: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+}
+
+.ca_conversation_inputBar .ca_profilePhoto img {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.ca_conversation_inputBar .ca_messageInput {
+  margin-left: 1.5rem;
+  border: none;
+  flex: 1;
+  height: 100%;
+}
+
+.ca_messageInput_sendBtn {
+  padding: 0.8rem 1.2rem;
+  border-radius: 3rem;
+  background-color: var(--btn-color);
+  color: white;
+  border: none;
+  margin-left: 0.8rem;
+}
+
+.ca_messageInput_sendBtn:hover {
+  opacity: 85%;
+}
+
+.ca_messageInput_sendIcon {
+  margin-left: 0.9rem;
+}

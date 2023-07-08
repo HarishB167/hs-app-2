@@ -1,0 +1,37 @@
+.ca_discussionItem {
+  display: flex;
+  padding: 1.3rem 2.1rem;
+  background-color: var(--bg-color-white-2);
+  width: 100%;
+  align-items: center;
+  color: var(--font-color-light);
+  font-size: 1.4rem;
+}
+
+.ca_discussionItem:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.ca_discussionItem_details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 2.2rem;
+}
+
+.ca_discussionItem_details .ca_userLastMessage {
+  width: 100%;
+}
+
+.ca_discussionItem:last-child {
+  border-bottom-left-radius: 2.2rem;
+  border-bottom-right-radius: 2.2rem;
+}
+
+.ca_discussionItem .ca_userName {
+  font-weight: 700;
+  color: black;
+  font-size: 1.6rem;
+}

@@ -10,6 +10,7 @@ const InBuiltApps = () => {
     { link: "/apps/tic-tac-toe", name: "Tic-Tac-Toe Game" },
     { link: "/apps/note-app", name: "Note App" },
     { link: "/apps/weather-app", name: "Weather App" },
+    { link: "/apps/chat-app", name: "Chat App" },
   ];
   return (
     <div className="iba_main">
