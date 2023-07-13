@@ -886,13 +886,13 @@ const chats = [
 
 const getChatsForUserId = (userId) => {
   return chats.filter(
-    (item) => item.senderId === userId || item.receiverId === userId
+    (item) => item.senderId == userId || item.receiverId == userId
   );
 };
 
 const getChatsForUserReceiverId = (userId, receiverId) => {
   return getChatsForUserId(userId).filter(
-    (item) => item.senderId === receiverId || item.receiverId === receiverId
+    (item) => item.senderId == receiverId || item.receiverId == receiverId
   );
 };
 
@@ -914,7 +914,7 @@ const getDiscussionsSummaryForUserId = (userId) => {
   const c = getChatsForUserId(userId);
   let discussions = c.reduce((accumulator, curVal) => {
     const otherPerson =
-      curVal.senderId === userId ? curVal.receiverId : curVal.senderId;
+      curVal.senderId == userId ? curVal.receiverId : curVal.senderId;
 
     if (!accumulator[otherPerson]) accumulator[otherPerson] = curVal;
     else if (accumulator[otherPerson].timestamp < curVal.timestamp) {
@@ -925,7 +925,7 @@ const getDiscussionsSummaryForUserId = (userId) => {
   }, {});
 
   discussions = Object.entries(discussions).map((item) => {
-    const u = users.find((i) => i.id === parseInt(item[0]));
+    const u = users.find((i) => i.id == parseInt(item[0]));
     const currentMsg = item[1];
 
     return {
@@ -948,6 +948,20 @@ const getCurrentUserId = () => {
   return 1;
 };
 
+const sendMessage = (message, senderId, receiverId) => {
+  const msg = {
+    messageId: new Date().getTime(),
+    senderId,
+    receiverId,
+    content: message,
+    timestamp: new Date().getTime(),
+    status: "sent",
+  };
+  console.log("sendMessage msg :>> ", msg);
+  chats.push(msg);
+  // console.log("chats :>> ", chats);
+};
+
 export default {
   getDiscussionsSummaryForUserId,
   getChatsForUserId,
@@ -955,4 +969,5 @@ export default {
   getUserDetails,
   getCurrentUserId,
   getTimeMarker,
+  sendMessage,
 };

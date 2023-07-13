@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import chatService from "../../services/fakeChatService";
 import "./main.css";
 import "./discussionItem.css";
@@ -36,7 +36,7 @@ const Conversations = ({ data, currentUserId }) => {
           className={"ca_conversation_chatItem" + getSenderReceiverClass(item)}
         >
           <div className="ca_conversation_chatMessage">{item.content}</div>
-          <div className="ca_conversatin_chatTime">
+          <div className="ca_conversation_chatTime">
             {chatService.getTimeMarker(item.timestamp)}
           </div>
         </div>
@@ -51,6 +51,8 @@ const Main = () => {
   );
   const [activeDiscussion, setActiveDiscussion] = useState();
   const [activeOtherEndUser, setActiveOtherEndUser] = useState();
+  const [currentMessage, setCurrentMessage] = useState("");
+  const scrollRef = useRef();
 
   const [data, setData] = useState({
     user: {},
@@ -64,12 +66,7 @@ const Main = () => {
       discussions: chatService.getDiscussionsSummaryForUserId(currentUserId),
       chat: chatService.getChatsForUserId(currentUserId),
     });
-
-    setActiveDiscussion(
-      chatService.getChatsForUserReceiverId(currentUserId, 2)
-    );
-    setActiveOtherEndUser(chatService.getUserDetails(2));
-  }, []);
+  }, [data]);
 
   const handleDiscussionItemClick = (discItem) => {
     console.log("discItem :>> ", discItem);
@@ -82,6 +79,30 @@ const Main = () => {
         parseInt(discItem.userId)
       )
     );
+  };
+
+  const handleMessageSend = () => {
+    if (currentMessage.length === 0) return;
+    const receiverUserId = activeOtherEndUser.id;
+    console.log(
+      "Sending message...",
+      currentMessage,
+      " : to -",
+      receiverUserId
+    );
+    setCurrentMessage("");
+    chatService.sendMessage(currentMessage, currentUserId, receiverUserId);
+    const chatData = chatService.getChatsForUserId(currentUserId);
+    console.log("chatData :>> ", chatData);
+    setData({ ...data, chat: chatData });
+    setActiveDiscussion(
+      chatService.getChatsForUserReceiverId(
+        currentUserId,
+        parseInt(receiverUserId)
+      )
+    );
+
+    scrollRef.current.scrollIntoView();
   };
 
   return (
@@ -123,6 +144,14 @@ const Main = () => {
         </div>
       </div>
       <div className="ca_conversation">
+        {!activeOtherEndUser && (
+          <div className="ca_conversation_notSelected">
+            <span className="ca_conversation_notSelected_icon">
+              <i className="fa-regular fa-hand-pointer"></i>
+            </span>
+            <span>Select a conversation</span>
+          </div>
+        )}
         {activeOtherEndUser && (
           <>
             <div className="ca_conversationDetails">
@@ -137,6 +166,10 @@ const Main = () => {
                 data={activeDiscussion}
                 currentUserId={currentUserId}
               />
+              <span
+                ref={scrollRef}
+                className="ca_conversation_chat_scrollPoint"
+              ></span>
             </div>
             <div className="ca_conversation_inputBar">
               <span className="ca_profilePhoto">
@@ -146,8 +179,13 @@ const Main = () => {
                 type="text"
                 className="ca_messageInput"
                 placeholder="Message"
+                value={currentMessage}
+                onChange={(e) => setCurrentMessage(e.currentTarget.value)}
               />
-              <button className="ca_messageInput_sendBtn">
+              <button
+                className="ca_messageInput_sendBtn"
+                onClick={handleMessageSend}
+              >
                 Send
                 <span className="ca_messageInput_sendIcon">
                   <i className="fa-regular fa-paper-plane"></i>

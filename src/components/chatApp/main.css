@@ -130,6 +130,11 @@
   display: flex;
   flex-direction: column;
   padding: 1.4rem 10rem;
+  overflow: auto;
+}
+
+.ca_conversation_chat_scrollPoint {
+  margin-top: 20rem;
 }
 
 .ca_conversation_inputBar {
