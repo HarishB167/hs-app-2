@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import Discussion from "./discussion";
-import chatService from "../../services/fakeChatService";
+import chatService from "../../services/chatService";
 import Conversation from "./conversation";
 import "./main.css";
 
@@ -17,34 +17,40 @@ const Main = () => {
   });
 
   useEffect(() => {
-    setData({
-      user: chatService.getUserDetails(currentUserId),
-      discussions: chatService.getDiscussionsSummaryForUserId(currentUserId),
-    });
+    const doSetData = async () =>
+      setData({
+        user: await chatService.getUserDetails(currentUserId),
+        discussions: await chatService.getDiscussionsSummaryForUserId(
+          currentUserId
+        ),
+      });
+
+    doSetData();
   }, []);
 
-  const handleDiscussionItemClick = (discItem) => {
-    console.log("discItem :>> ", discItem);
+  const handleDiscussionItemClick = async (discItem) => {
     setActiveOtherEndUser(
-      chatService.getUserDetails(parseInt(discItem.userId))
+      await chatService.getUserDetails(parseInt(discItem.userId))
     );
     setActiveDiscussion(
-      chatService.getChatsForUserReceiverId(
+      await chatService.getChatsForUserReceiverId(
         currentUserId,
         parseInt(discItem.userId)
       )
     );
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     setData({
       ...data,
-      discussions: chatService.getDiscussionsSummaryForUserId(currentUserId),
+      discussions: await chatService.getDiscussionsSummaryForUserId(
+        currentUserId
+      ),
     });
 
     const receiverUserId = activeOtherEndUser.id;
     setActiveDiscussion(
-      chatService.getChatsForUserReceiverId(
+      await chatService.getChatsForUserReceiverId(
         currentUserId,
         parseInt(receiverUserId)
       )

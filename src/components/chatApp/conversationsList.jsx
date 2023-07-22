@@ -9,17 +9,20 @@ const ConversationsList = ({ data, currentUserId, getTimeMarker }) => {
 
   return (
     <>
-      {data.map((item, idx) => (
-        <div
-          key={idx}
-          className={"ca_conversation_chatItem" + getSenderReceiverClass(item)}
-        >
-          <div className="ca_conversation_chatMessage">{item.content}</div>
-          <div className="ca_conversation_chatTime">
-            {getTimeMarker(item.timestamp)}
+      {data &&
+        data.map((item, idx) => (
+          <div
+            key={idx}
+            className={
+              "ca_conversation_chatItem" + getSenderReceiverClass(item)
+            }
+          >
+            <div className="ca_conversation_chatMessage">{item.content}</div>
+            <div className="ca_conversation_chatTime">
+              {getTimeMarker(item.dateTime)}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </>
   );
 };

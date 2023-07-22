@@ -13,7 +13,7 @@ const Conversation = ({
   const scrollRef = useRef();
   const [currentMessage, setCurrentMessage] = useState("");
 
-  const handleMessageSend = () => {
+  const handleMessageSend = async () => {
     if (currentMessage.length === 0) return;
     const receiverUserId = activeOtherEndUser.id;
     console.log(
@@ -23,7 +23,7 @@ const Conversation = ({
       receiverUserId
     );
     setCurrentMessage("");
-    sendMessage(currentMessage, currentUserId, receiverUserId);
+    await sendMessage(currentMessage, currentUserId, receiverUserId);
     handleUpdate();
     scrollRef.current.scrollIntoView();
   };
