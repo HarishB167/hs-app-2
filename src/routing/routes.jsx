@@ -11,6 +11,8 @@ import TicTacToe from "../pages/ticTacToe";
 import NoteApp from "../pages/noteApp";
 import WeatherApp from "../pages/weatherApp";
 import ChatApp from "../pages/chatApp";
+import Login from "../components/chatApp/login";
+import SignUp from "../components/chatApp/signup";
 
 const router = createBrowserRouter([
   {
@@ -66,6 +68,10 @@ const router = createBrowserRouter([
           {
             path: "chat-app",
             element: <ChatApp />,
+            children: [
+              { path: "login", element: <Login /> },
+              { path: "signup", element: <SignUp /> },
+            ],
           },
         ],
       },

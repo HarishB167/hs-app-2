@@ -1,0 +1,18 @@
+.ca_inputFile_icon {
+  color: var(--sender-blue);
+  display: inline-block;
+  padding: 1.2rem 3.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4rem;
+  font-size: 2.5rem;
+  background: var(--bg-color-white-2);
+}
+
+.ca_inputFile {
+  padding: 0.6rem 0.8rem;
+  border-radius: 4rem;
+  border: 1px solid var(--border-color);
+  color: var(--font-color-light);
+  vertical-align: middle;
+  background: white;
+}

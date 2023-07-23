@@ -3,6 +3,9 @@ import Discussion from "./discussion";
 import chatService from "../../services/chatService";
 import Conversation from "./conversation";
 import "./main.css";
+import Login from "./login";
+import SignUp from "./signup";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Main = () => {
   const [currentUserId, setCurrentUserId] = useState(
@@ -15,6 +18,7 @@ const Main = () => {
     user: {},
     discussions: [],
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const doSetData = async () =>
@@ -25,7 +29,10 @@ const Main = () => {
         ),
       });
 
-    doSetData();
+    if (currentUserId) doSetData();
+    else {
+      navigate("login");
+    }
   }, []);
 
   const handleDiscussionItemClick = async (discItem) => {
@@ -56,6 +63,8 @@ const Main = () => {
       )
     );
   };
+
+  if (currentUserId === 0) return <Outlet />;
 
   return (
     <div className="ca_main">

@@ -42,7 +42,7 @@ const getUserDetails = async (id) => {
 
 // TODO : after implementing login and logout
 const getCurrentUserId = () => {
-  return 2;
+  return 0;
 };
 
 const sendMessage = async (message, senderId, receiverId) => {
@@ -57,6 +57,10 @@ const sendMessage = async (message, senderId, receiverId) => {
   await httpService.post(url, msg);
 };
 
+const login = async (username, password) => {
+  return 1;
+};
+
 export default {
   getDiscussionsSummaryForUserId,
   getChatsForUserId,
@@ -65,4 +69,5 @@ export default {
   getCurrentUserId,
   getTimeMarker,
   sendMessage,
+  login,
 };

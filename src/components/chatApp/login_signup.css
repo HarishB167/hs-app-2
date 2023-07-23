@@ -1,0 +1,53 @@
+.ca_main--center {
+  align-items: center;
+  justify-content: center;
+}
+
+.ca_form {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-color-white-2);
+  padding: 0.9rem 6.4rem 3.8rem;
+  row-gap: 2.2rem;
+  border: 1px solid var(--border-color);
+  border-radius: 2rem;
+}
+
+.ca_pageTitle {
+  align-self: center;
+  font-size: 4.6rem;
+  font-weight: 700;
+}
+
+.ca_formInput {
+  padding: 2.6rem 3.4rem;
+  border-radius: 4rem;
+  outline: none;
+  border: 1px solid var(--border-color);
+}
+
+.ca_inputErrorLabel {
+  color: red;
+}
+
+.ca_button {
+  background: var(--sender-blue);
+  color: white;
+  outline: none;
+  border: none;
+}
+
+.ca_button:enabled:hover {
+  opacity: 75%;
+}
+
+.ca_link {
+  color: var(--sender-blue);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .ca_form {
+    padding: 4.9rem 2rem 3.8rem;
+  }
+}
