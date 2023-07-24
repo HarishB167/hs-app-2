@@ -74,7 +74,7 @@ const Login = () => {
   };
 
   return (
-    <div className="ca_main ca_main--center">
+    <>
       <div className="ca_form">
         <div className="ca_pageTitle">Chat App</div>
         <input
@@ -114,7 +114,7 @@ const Login = () => {
           Signup
         </a>
       </div>
-    </div>
+    </>
   );
 };
 

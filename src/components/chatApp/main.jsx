@@ -3,8 +3,6 @@ import Discussion from "./discussion";
 import chatService from "../../services/chatService";
 import Conversation from "./conversation";
 import "./main.css";
-import Login from "./login";
-import SignUp from "./signup";
 import { Outlet, useNavigate } from "react-router-dom";
 
 const Main = () => {
@@ -64,10 +62,15 @@ const Main = () => {
     );
   };
 
-  if (currentUserId === 0) return <Outlet />;
+  if (currentUserId === 0)
+    return (
+      <div data-testid="ca-main" className="ca_main ca_main--center">
+        <Outlet />
+      </div>
+    );
 
   return (
-    <div className="ca_main">
+    <div data-testid="ca-main" className="ca_main">
       <div className="ca_messages">
         <div className="ca_messagesSection ca_accountDetails">
           <div className="ca_messages_headingLine">
