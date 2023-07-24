@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="main-container">
+    <div data-testid="index-app" className="main-container">
       <ToastContainer />
       <NavBar />
       <Outlet />
