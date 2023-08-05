@@ -135,7 +135,106 @@ const router = createBrowserRouter([
  }
 ])
 
+------------------------------------------------------------
+
+Test driven development
+
+- Structure
+* What to test
+If a component renders with or without props
+How a component renders with state changes
+How a componnet reacts to user interactions
+* What not to test
+Actual implementation : not testing actual sorting logic.
+Third part libraries : they are already tested.
+* Testing steps
+> Render the component
+> Get an element from the component and simulate any user interaction
+> Write an assertion
+
+- Setup
+* Using create-react-app
+* Libraries - jest and react-testing-library
+* Ensure setupTests.js has
+import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/extend-expect';
+* In package.json
+> change scripts.test : "react-scripts test --watchAll --coverage"
+> For coverage threshold, add : 
+    jest.coverageThreshold.global.lines : 80
+
+- Writing test
+* Folder containing component, create "__tests__" folder
+* Create test element.test.jsx as :
+import { render, screen } from '@testing-library/react'
+import Element from '../components/Element';
+
+test("Example 1 renders successfully", () => {
+    render(<Element/>);
+
+    const element = screen.getByText(/first test/i);
+
+    expect(element).toBeInTheDocument();
+})
+
+- Using Mock data
+* In test file declare test data
+mockData = [...]
+* Use in render as
+render(<Element data={mockData}/>);
+
+- Covering all branches
+* Use different set of mock data to get different branches
+* Write different test functions for that
+
+- Test user interactions
+* Install user-event library
+npm i --save-dev @testing-library/user-event
+* Test onClick of element
+Checking onClick to be called
+
+test("Email link click handler called", async () => {
+    const mockHandleClick = jest.fn();
+    render(<TestWithMockData 
+                data={mockData} 
+                displayUnorderedList={true}
+                handleClick = {mockHandleClick}
+          />)
+    await userEvent.click(screen.getByText(/user@mail.com/i));
+    expect(mockHandleClick).toHaveBeenCalled();
+})
+
+- Query input fields and buttons
+* input type text : screen.getByRole('textbox')
+* button : screen.getByRole('button')
+* input by placeholder : screen.getByPlaceholderText(/enter name/i);
+* input by label : screen.getByLabelText(/enter password/i);
+* button by name : screen.getByRole('button', { name: /submit/i });
+* input by label : screen.getByRole('textbox', { name: /enter password/i });
+
+- Test state updates
+* State change on button click
+test("Toggle text visible", async () => {
+    render(<TestingStateChange/>);
+    await userEvent.click(screen.getByText(/toggle text/i));
+    expect(screen.getByText(/text visible/i)).toBeInTheDocument();
+})
+* Test if element was added to list
+> Use data-testid='record' for all records of list
+test("Element added to the list", async () => {
+    render(<TestingStateChange/>)
+    expect(screen.getAllByTestId('record').length).toBe(3);
+
+    await userEvent.click(screen.getByText(/add to list/i));
+    expect(screen.getAllByTestId('record').length).toBe(4);
+})
+* Test if element was removed from list
+test("Element removed from list", async () => {
+    render(<TestingStateChange/>)
+    await userEvent.click(screen.getByText(/remove from list/i));
+    expect(screen.getAllByTestId('record').length).toBe(2);
+})
 
 
-
-
+- Test API Calls
+* 
