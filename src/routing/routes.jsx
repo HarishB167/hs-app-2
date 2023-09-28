@@ -11,6 +11,7 @@ import TicTacToe from "../pages/ticTacToe";
 import NoteApp from "../pages/noteApp";
 import WeatherApp from "../pages/weatherApp";
 import AboutMe from "../pages/AboutMe";
+import ContactForm from "../pages/ContactForm";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "contact",
-        element: <div>Contact : to be build</div>,
+        element: <ContactForm />,
       },
       {
         path: "inbuiltapps",
