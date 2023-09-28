@@ -10,13 +10,22 @@ import PasswordGenerator from "../pages/passwordGenerator";
 import TicTacToe from "../pages/ticTacToe";
 import NoteApp from "../pages/noteApp";
 import WeatherApp from "../pages/weatherApp";
+import AboutMe from "../pages/AboutMe";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: (
+      <App>
+        <ErrorPage />
+      </App>
+    ),
     children: [
-      { path: "", element: <Home /> },
+      {
+        path: "",
+        element: <AboutMe />,
+      },
       {
         path: "features",
         element: <div>Features : to be build</div>,
@@ -65,7 +74,6 @@ const router = createBrowserRouter([
         ],
       },
     ],
-    errorElement: <ErrorPage />,
   },
 ]);
 
