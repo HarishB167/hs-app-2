@@ -12,6 +12,8 @@ import NoteApp from "../pages/noteApp";
 import WeatherApp from "../pages/weatherApp";
 import AboutMe from "../pages/AboutMe";
 import ContactForm from "../pages/ContactForm";
+import Portfolio from "../pages/Portfolio";
+import { Flex } from "@chakra-ui/react";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +30,8 @@ const router = createBrowserRouter([
         element: <AboutMe />,
       },
       {
-        path: "features",
-        element: <div>Features : to be build</div>,
-      },
-      {
-        path: "about",
-        element: <div>About : to be build</div>,
+        path: "portfolio",
+        element: <Portfolio />,
       },
       {
         path: "contact",
@@ -43,36 +41,40 @@ const router = createBrowserRouter([
         path: "inbuiltapps",
         element: <InBuiltApps />,
       },
+    ],
+  },
+  {
+    path: "/apps",
+    element: (
+      <Flex h="100vh" w="100vw" justifyContent="center">
+        <Outlet />
+      </Flex>
+    ),
+    children: [
+      { path: "calculator", element: <Calculator /> },
       {
-        path: "apps",
-        element: <Outlet />,
-        children: [
-          { path: "calculator", element: <Calculator /> },
-          {
-            path: "rock-paper-scissor",
-            element: <RockPaperScissor />,
-          },
-          {
-            path: "stopwatch",
-            element: <Stopwatch />,
-          },
-          {
-            path: "password-generator",
-            element: <PasswordGenerator />,
-          },
-          {
-            path: "tic-tac-toe",
-            element: <TicTacToe />,
-          },
-          {
-            path: "note-app",
-            element: <NoteApp />,
-          },
-          {
-            path: "weather-app",
-            element: <WeatherApp />,
-          },
-        ],
+        path: "rock-paper-scissor",
+        element: <RockPaperScissor />,
+      },
+      {
+        path: "stopwatch",
+        element: <Stopwatch />,
+      },
+      {
+        path: "password-generator",
+        element: <PasswordGenerator />,
+      },
+      {
+        path: "tic-tac-toe",
+        element: <TicTacToe />,
+      },
+      {
+        path: "note-app",
+        element: <NoteApp />,
+      },
+      {
+        path: "weather-app",
+        element: <WeatherApp />,
       },
     ],
   },

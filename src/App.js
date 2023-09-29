@@ -25,7 +25,6 @@ const navLinks = [
   { link: "/", label: "About me" },
   { link: "/portfolio", label: "My work" },
   { link: "/contact", label: "Contact" },
-  { link: "/hire-me", label: "Hire me" },
 ];
 
 const App = ({ children }) => {
