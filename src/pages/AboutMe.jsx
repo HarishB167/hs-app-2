@@ -1,9 +1,16 @@
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Image,
+  Text,
+  useDimensions,
+  useMediaQuery,
+} from "@chakra-ui/react";
+import { useRef } from "react";
 import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   vr: {
-    height: "100%",
     borderLeft: "1px dashed lightgray",
     margin: "0 10px",
   },
@@ -23,13 +30,23 @@ const links = [
 const AboutMe = () => {
   const classes = useStyles();
 
+  const [isSmallerThan768] = useMediaQuery("(max-width: 768px)");
+  const containerRef = useRef();
+  const containerDimensions = useDimensions(containerRef);
+
   const handleConnectLink = (linkName) => {
     const { url } = links.find((item) => item.name === linkName);
     if (url) window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <Flex p="20px 10px 32px" fontFamily="'Ubuntu', sans-serif;" gap="24px">
+    <Flex
+      p="20px 10px 32px"
+      fontFamily="'Ubuntu', sans-serif;"
+      gap="24px"
+      flexDir={isSmallerThan768 ? "column-reverse" : ""}
+      ref={containerRef}
+    >
       <Flex flex="2 0" flexDir="column">
         <Heading
           w="100%"
@@ -186,7 +203,12 @@ const AboutMe = () => {
           <br />
         </Text>
       </Flex>
-      <hr className={classes.vr} />
+      {!isSmallerThan768 && (
+        <hr
+          className={classes.vr}
+          style={{ height: containerDimensions?.contentBox?.height }}
+        />
+      )}
       <Flex flex="1 0" flexDir="column">
         <Text color="gray">CONNECT WITH ME</Text>
         <Flex fontSize="2em" gap="0.5em">
