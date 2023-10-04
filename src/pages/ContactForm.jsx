@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Button,
   Flex,
@@ -9,6 +10,8 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { createUseStyles } from "react-jss";
+import { useToast } from "@chakra-ui/react";
+import { saveResponse } from "../services/contactFormService";
 
 const useStyles = createUseStyles({
   form: {
@@ -25,10 +28,43 @@ const dividerBorder = "1px dashed lightgray";
 
 const ContactForm = () => {
   const classes = useStyles();
+  const toast = useToast();
+  const [response, setResponse] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  const handleFormSubmit = (e) => {
+  const handleChange = (type, value) => {
+    setResponse((prevResponse) => ({ ...prevResponse, [type]: value }));
+  };
+
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submitted");
+
+    const saveResponseAndClearForm = async () => {
+      await saveResponse(response);
+      setResponse({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    };
+    const task = saveResponseAndClearForm();
+
+    toast.promise(task, {
+      success: {
+        title: "Success",
+        description: "Your response have been submitted.",
+      },
+      error: {
+        title: "Failed",
+        description: "Unknown error occured",
+      },
+      loading: { title: "Sending..." },
+    });
   };
   return (
     <Flex p="20px 10px 32px" fontFamily="'Ubuntu', sans-serif;" gap="24px">
@@ -56,19 +92,35 @@ const ContactForm = () => {
         <form className={classes.form} onSubmit={handleFormSubmit}>
           <FormControl isRequired>
             <FormLabel>Your Name (required)</FormLabel>
-            <Input type="text" />
+            <Input
+              type="text"
+              value={response.name}
+              onChange={(e) => handleChange("name", e.target.value)}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Your Email (required)</FormLabel>
-            <Input type="email" />
+            <Input
+              type="email"
+              value={response.email}
+              onChange={(e) => handleChange("email", e.target.value)}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Subject</FormLabel>
-            <Input type="text" />
+            <Input
+              type="text"
+              value={response.subject}
+              onChange={(e) => handleChange("subject", e.target.value)}
+            />
           </FormControl>
           <FormControl isRequired>
             <FormLabel>Message</FormLabel>
-            <Textarea rows="6" />
+            <Textarea
+              rows="6"
+              value={response.message}
+              onChange={(e) => handleChange("message", e.target.value)}
+            />
           </FormControl>
           <Button type="submit" size="lg" w="fit-content" colorScheme="purple">
             Send
