@@ -1,6 +1,6 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
 import App from "../App";
-import Home from "../pages/home";
 import ErrorPage from "../pages/errorPage";
 import InBuiltApps from "../pages/inBuiltApps";
 import Calculator from "../pages/calculator";
@@ -13,7 +13,7 @@ import WeatherApp from "../pages/weatherApp";
 import AboutMe from "../pages/AboutMe";
 import ContactForm from "../pages/ContactForm";
 import Portfolio from "../pages/Portfolio";
-import { Flex } from "@chakra-ui/react";
+import VRPage from "../pages/landingPages/VRPage";
 
 const router = createBrowserRouter([
   {
@@ -45,36 +45,73 @@ const router = createBrowserRouter([
   },
   {
     path: "/apps",
-    element: (
-      <Flex h="100vh" w="100vw" justifyContent="center">
-        <Outlet />
-      </Flex>
-    ),
+    element: <Outlet />,
     children: [
-      { path: "calculator", element: <Calculator /> },
+      {
+        path: "calculator",
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <Calculator />
+          </Flex>
+        ),
+      },
       {
         path: "rock-paper-scissor",
-        element: <RockPaperScissor />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <RockPaperScissor />
+          </Flex>
+        ),
       },
       {
         path: "stopwatch",
-        element: <Stopwatch />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <Stopwatch />
+          </Flex>
+        ),
       },
       {
         path: "password-generator",
-        element: <PasswordGenerator />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <PasswordGenerator />
+          </Flex>
+        ),
       },
       {
         path: "tic-tac-toe",
-        element: <TicTacToe />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <TicTacToe />
+          </Flex>
+        ),
       },
       {
         path: "note-app",
-        element: <NoteApp />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <NoteApp />
+          </Flex>
+        ),
       },
       {
         path: "weather-app",
-        element: <WeatherApp />,
+        element: (
+          <Flex h="100vh" w="100vw" justifyContent="center">
+            <WeatherApp />
+          </Flex>
+        ),
+      },
+      {
+        path: "landing-pages",
+        element: <Outlet />,
+        children: [
+          {
+            path: "vr-landing-page",
+            element: <VRPage />,
+          },
+        ],
       },
     ],
   },
