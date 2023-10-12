@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
+import TechSection from "./TechSection";
 
 const bgColor = "#302C42";
 
@@ -28,6 +29,7 @@ const VRPage = () => {
         <HeroSection />
         <AboutSection />
         <ServicesSection />
+        <TechSection />
       </Flex>
     </Flex>
   );

@@ -26,7 +26,7 @@ const Card = ({ image, title, text }) => {
     >
       <Image
         m="10px"
-        boxShadow="0 0 20px black"
+        boxShadow="0 0 0 10px rgba(0,0,0,0.3)"
         borderRadius="190px"
         src={image}
       />

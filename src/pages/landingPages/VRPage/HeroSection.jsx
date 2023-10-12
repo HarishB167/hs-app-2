@@ -68,7 +68,7 @@ const HeroSection = () => {
           margin="0 50px"
           src={image}
           borderRadius="100px 100px 100px 240px"
-          boxShadow="0px 0px 16px rgba(0,0,0,0.80)"
+          boxShadow="0 0 0 16px rgba(0,0,0,0.15)"
           height="fit-content"
         />
       </Flex>
