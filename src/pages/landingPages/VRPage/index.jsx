@@ -5,6 +5,7 @@ import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
 import TechSection from "./TechSection";
 import ProcessSection from "./ProcessSection";
+import OptInSection from "./OptInSection";
 
 const bgColor = "#302C42";
 
@@ -25,6 +26,7 @@ const VRPage = () => {
         <ServicesSection />
         <TechSection />
         <ProcessSection />
+        <OptInSection />
       </Flex>
     </Flex>
   );
