@@ -1,20 +1,14 @@
-import { createUseStyles } from "react-jss";
 import { Flex } from "@chakra-ui/react";
 import NavBar from "./NavBar";
 import HeroSection from "./HeroSection";
 import AboutSection from "./AboutSection";
 import ServicesSection from "./ServicesSection";
 import TechSection from "./TechSection";
+import ProcessSection from "./ProcessSection";
 
 const bgColor = "#302C42";
 
-const useStyles = createUseStyles({
-  container: {},
-});
-
 const VRPage = () => {
-  const classes = useStyles();
-
   return (
     <Flex
       bgColor={bgColor}
@@ -30,6 +24,7 @@ const VRPage = () => {
         <AboutSection />
         <ServicesSection />
         <TechSection />
+        <ProcessSection />
       </Flex>
     </Flex>
   );
